@@ -1,73 +1,19 @@
-# Nuxt Layer Starter
+# Problem with Nuxt Playground linting
 
-Create Nuxt extendable layer with this GitHub template.
+There are two problems with the Nuxt Playground linting:
 
-## Setup
+### Reproduction
 
-Make sure to install the dependencies:
+Only see the console output
 
-```bash
-pnpm install
-```
+## 1. `vue/multi-word-component-name` rule
 
-## Working on your layer
+Default this off on nuxt pages and layers folder, but it not working in `.playground` folder.
 
-Your layer is at the root of this repository, it is exactly like a regular Nuxt project, except you can publish it on NPM.
+`pages/index.vue` has no error, but the same file in playground (`.playground/pages/index.vue`) has error.
 
-The `.playground` directory should help you on trying your layer during development.
+## 2. `vue/no-multiple-template-root` rule
 
-Running `pnpm dev` will prepare and boot `.playground` directory, which imports your layer itself.
+Default this is error on nuxt pages and layers folder, but it not working in `.playground` folder.
 
-## Distributing your layer
-
-Your Nuxt layer is shaped exactly the same as any other Nuxt project, except you can publish it on NPM.
-
-To do so, you only have to check if `files` in `package.json` are valid, then run:
-
-```bash
-npm publish --access public
-```
-
-Once done, your users will only have to run:
-
-```bash
-npm install --save your-layer
-```
-
-Then add the dependency to their `extends` in `nuxt.config`:
-
-```ts
-defineNuxtConfig({
-  extends: 'your-layer'
-})
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-pnpm dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Or statically generate it with:
-
-```bash
-pnpm generate
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`pages/multiple-template-root.vue` has error, but the same file in playground (`.playground/pages/multiple-template-root.vue`) has no error.
